@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+      <form #f="ngForm">
+      <div class="mb-3">
+          <label>title :</label>
+          <input class="form-control" name="title" [(ngModel)]="menu.title"
+          #title="ngModel" required minlength="3" pattern="[a-zA-Z]*">
+          <div class="alert alert-danger" *ngIf="title.invalid && (title.touched || title.dirty)">
+              <div *ngIf="title.errors!['required']">FirstName is required</div>
+              <div *ngIf="title.errors!['minlength']">FirstName must have at least 3 characters</div>
+              <div *ngIf="title.errors!['pattern']">First must have only characters</div>
+          </div>
+      </div>
+      <div class="mb-3">
+          <label>description :</label>
+          <input class="form-control" name="description" [(ngModel)]="menu.description" #description="ngModel" required
+              minlength="3" pattern="[a-zA-Z]*">
+          <div class="alert alert-danger" *ngIf="description.invalid && (description.touched || description.dirty)">
+              <div *ngIf="description.errors!['required']">Last Name is required</div>
+              <div *ngIf="description.errors!['minlength']">Last Name must have at least 3 characters</div>
+              <div *ngIf="description.errors!['pattern']">Last Name must have only characters</div>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <input type="submit" class="btn btn-primary" value="Submit" [disabled]="f.invalid">
+      </div>
+      </form>
+  </div>
+</div>
